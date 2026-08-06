@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://bopanna012.github.io/My_Portfolio/sitemap.xml

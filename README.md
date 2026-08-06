@@ -6,13 +6,12 @@ Personal portfolio website for Yashu Bopanna Pasura Devaiah, a cloud engineer â€
 
 - Hero introduction with resume download
 - About
-- Projects
 - Skills
 - Experience
 - Education
-- Certifications
-- Testimonials
-- Blog
+- Projects
+- Certifications & Honors
+- Languages
 - Contact
 
 ## Running locally
@@ -35,6 +34,6 @@ script.js    Nav toggle, scroll-reveal animations, active nav highlighting, back
 
 ## To do
 
-- Replace placeholder text/links throughout (projects, experience, education, certifications, testimonials, blog, social links)
+- Replace placeholder social links and Formspree form ID
 - Add `assets/profile.jpg` (hero photo) and `assets/og-image.jpg` (social share preview)
 - Add `resume.pdf`
