@@ -20,24 +20,6 @@ Personal portfolio site for Yashu Bopanna Pasura Devaiah — Master's student in
 - **Languages** — English (C1), German (A2)
 - **Contact** — email, contact form, social links
 
-## Features
-
-- Light/dark theme toggle (persisted via `localStorage`, defaults to dark)
-- Scroll-reveal animations with staggered card/list entrances
-- Scroll progress bar and active-section nav highlighting
-- Responsive nav with mobile hamburger menu
-- Accessible skip-to-content link
-
-## Running locally
-
-No build step. Open `index.html` directly, or serve it:
-
-```bash
-python -m http.server 8000
-```
-
-Then visit `http://localhost:8000`.
-
 ## Structure
 
 ```
