@@ -28,9 +28,3 @@ style.css    Styling (CSS custom properties drive the theme toggle)
 script.js    Nav toggle, scroll-reveal, active-nav highlighting, back-to-top, theme toggle
 .nojekyll    Tells GitHub Pages to skip Jekyll processing (required for this repo's build)
 ```
-
-## To do
-
-- Replace placeholder social links (GitHub/LinkedIn/Twitter) and the Formspree form ID in the Contact section
-- Add `assets/og-image.jpg` (social share preview)
-- Add `resume.pdf`
