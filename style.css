@@ -5,54 +5,57 @@
 }
 
 :root {
-  --accent: #4da6ff;
-  --accent-hover: #2d8ae5;
+  --accent: #b8860b;
+  --accent-hover: #96690c;
+  --text-on-accent: #18181b;
 
-  --bg-body: #000;
-  --text-body: #eee;
-  --bg-hero: #000;
-  --text-hero-sub: #bbb;
-  --bg-stats: #0a0a0a;
-
-  --bg-card: #111;
-  --border-card: #333;
-  --shadow-card: rgba(0, 0, 0, 0.4);
-
-  --bg-tag: #1a1a1a;
-  --text-tag: #7ab8ff;
-
-  --text-meta: #999;
-
-  --bg-input: #111;
-  --border-input: #333;
-  --text-input: #eee;
-
-  --profile-bg: #111;
-  --text-social: #eee;
-}
-
-[data-theme="light"] {
-  --bg-body: #ffffff;
-  --text-body: #222;
-  --bg-hero: #f4f6f9;
-  --text-hero-sub: #555;
-  --bg-stats: #f4f6f9;
+  --bg-body: #fafaf9;
+  --text-body: #18181b;
+  --bg-hero: #fafaf9;
+  --text-hero-sub: #71717a;
+  --bg-stats: #ffffff;
 
   --bg-card: #ffffff;
-  --border-card: #e0e0e0;
-  --shadow-card: rgba(0, 0, 0, 0.08);
+  --border-card: #e7e5e4;
+  --shadow-card: rgba(0, 0, 0, 0.06);
 
-  --bg-tag: #eef4ff;
-  --text-tag: #2d6cc0;
+  --bg-tag: #fbf1d9;
+  --text-tag: #92660b;
 
-  --text-meta: #777;
+  --text-meta: #71717a;
 
   --bg-input: #ffffff;
-  --border-input: #ccc;
-  --text-input: #222;
+  --border-input: #e7e5e4;
+  --text-input: #18181b;
 
-  --profile-bg: #eee;
-  --text-social: #222;
+  --text-social: #18181b;
+}
+
+[data-theme="dark"] {
+  --accent: #d4af37;
+  --accent-hover: #aa8c2c;
+  --text-on-accent: #0c0c0c;
+
+  --bg-body: #0c0c0c;
+  --text-body: #fafaf9;
+  --bg-hero: #0c0c0c;
+  --text-hero-sub: #a1a1aa;
+  --bg-stats: #171717;
+
+  --bg-card: #171717;
+  --border-card: #27272a;
+  --shadow-card: rgba(0, 0, 0, 0.5);
+
+  --bg-tag: #27272a;
+  --text-tag: #d4af37;
+
+  --text-meta: #a1a1aa;
+
+  --bg-input: #171717;
+  --border-input: #27272a;
+  --text-input: #fafaf9;
+
+  --text-social: #fafaf9;
 }
 
 body {
@@ -68,7 +71,7 @@ body {
   top: -3rem;
   left: 1rem;
   background: var(--accent);
-  color: #fff;
+  color: var(--text-on-accent);
   padding: 0.6rem 1.2rem;
   border-radius: 4px;
   text-decoration: none;
@@ -86,7 +89,7 @@ body {
   left: 0;
   height: 3px;
   width: 0%;
-  background: linear-gradient(90deg, var(--accent), #7ab8ff);
+  background: var(--accent);
   z-index: 200;
   transition: width 0.1s ease-out;
 }
@@ -96,6 +99,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
+  padding-right: 4.5rem;
   background: #111;
   color: #fff;
   position: sticky;
@@ -132,12 +136,12 @@ body {
   bottom: -2px;
   width: 0;
   height: 2px;
-  background: #4da6ff;
+  background: var(--accent);
   transition: width 0.25s ease;
 }
 
 .navbar nav a:hover {
-  color: #4da6ff;
+  color: var(--accent);
 }
 
 .navbar nav a:hover::after,
@@ -146,7 +150,7 @@ body {
 }
 
 .navbar nav a.active {
-  color: #4da6ff;
+  color: var(--accent);
 }
 
 .nav-right {
@@ -161,6 +165,22 @@ body {
   border: none;
   color: #fff;
   font-size: 1.3rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.lang-toggle {
+  position: fixed;
+  top: 0.9rem;
+  right: 1.5rem;
+  z-index: 210;
+  background: #111;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 0.3rem 0.5rem;
   cursor: pointer;
   line-height: 1;
 }
@@ -188,10 +208,9 @@ body {
   animation: hero-in 0.7s ease forwards;
 }
 
-.hero .profile-photo { animation-delay: 0.05s; }
-.hero h1 { animation-delay: 0.2s; }
-.hero p { animation-delay: 0.35s; }
-.hero .hero-buttons { animation-delay: 0.5s; }
+.hero h1 { animation-delay: 0.05s; }
+.hero p { animation-delay: 0.2s; }
+.hero .hero-buttons { animation-delay: 0.35s; }
 
 @keyframes hero-in {
   to {
@@ -206,16 +225,6 @@ body {
     opacity: 1;
     transform: none;
   }
-}
-
-.profile-photo {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1.5rem;
-  border: 3px solid var(--accent);
-  background: var(--profile-bg);
 }
 
 .hero h1 {
@@ -238,7 +247,7 @@ body {
 
 .btn {
   background: var(--accent);
-  color: #fff;
+  color: var(--text-on-accent);
   padding: 0.7rem 1.5rem;
   border-radius: 5px;
   text-decoration: none;
@@ -257,7 +266,7 @@ body {
 
 .btn-outline:hover {
   background: var(--accent);
-  color: #fff;
+  color: var(--text-on-accent);
 }
 
 .stats {
@@ -511,7 +520,7 @@ body {
   border-radius: 50%;
   border: none;
   background: var(--accent);
-  color: #fff;
+  color: var(--text-on-accent);
   font-size: 1.2rem;
   cursor: pointer;
   display: none;

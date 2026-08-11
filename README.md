@@ -32,5 +32,5 @@ script.js    Nav toggle, scroll-reveal, active-nav highlighting, back-to-top, th
 ## To do
 
 - Replace placeholder social links (GitHub/LinkedIn/Twitter) and the Formspree form ID in the Contact section
-- Add `assets/profile.jpg` (hero photo) and `assets/og-image.jpg` (social share preview)
+- Add `assets/og-image.jpg` (social share preview)
 - Add `resume.pdf`

@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <script>
-  if (localStorage.getItem('theme') === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
   }
 </script>
 <meta charset="UTF-8">
@@ -40,9 +40,11 @@
 </head>
 <body>
 
-  <a href="#main-content" class="skip-link">Skip to content</a>
+  <a href="#main-content" class="skip-link" data-i18n="skipLink">Skip to content</a>
 
   <div class="progress-bar" id="progressBar"></div>
+
+  <button class="lang-toggle" id="langToggle" aria-label="Switch language">DE</button>
 
   <header class="navbar">
     <h2><div class="logo">Yashu Bopanna Pasura Devaiah</div></h2>
@@ -51,59 +53,58 @@
       <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">&#9776;</button>
       <nav id="navMenu">
         <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#certifications">Certifications</a></li>
-          <li><a href="#languages">Languages</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+          <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+          <li><a href="#education" data-i18n="nav.education">Education</a></li>
+          <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+          <li><a href="#certifications" data-i18n="nav.certifications">Certifications</a></li>
+          <li><a href="#languages" data-i18n="nav.languages">Languages</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <section class="hero" id="main-content">
-    <img src="assets/profile.jpg" alt="Profile photo" class="profile-photo">
-    <h1>Hi, I'm Yashu 👋</h1>
-    <p>A cloud engineer learning to build and showcase my work.</p>
+    <h1 data-i18n="hero.greeting">Hi, I'm Yashu 👋</h1>
+    <p data-i18n="hero.subtitle">A cloud engineer learning to build and showcase my work.</p>
     <div class="hero-buttons">
-      <a href="#projects" class="btn">View My Work</a>
-      <a href="resume.pdf" class="btn btn-outline" download>Download Resume</a>
+      <a href="#projects" class="btn" data-i18n="hero.viewWork">View My Work</a>
+      <a href="resume.pdf" class="btn btn-outline" download data-i18n="hero.downloadResume">Download Resume</a>
     </div>
   </section>
 
   <section class="stats">
     <div class="stat reveal">
       <span class="stat-number">4</span>
-      <span class="stat-label">Years Experience</span>
+      <span class="stat-label" data-i18n="stats.years">Years Experience</span>
     </div>
     <div class="stat reveal">
       <span class="stat-number">5</span>
-      <span class="stat-label">Projects Completed</span>
+      <span class="stat-label" data-i18n="stats.projects">Projects Completed</span>
     </div>
     <div class="stat reveal">
       <span class="stat-number">0</span>
-      <span class="stat-label">Certifications</span>
+      <span class="stat-label" data-i18n="stats.certifications">Certifications</span>
     </div>
     <div class="stat reveal">
       <span class="stat-number">0</span>
-      <span class="stat-label">Happy Clients</span>
+      <span class="stat-label" data-i18n="stats.clients">Happy Clients</span>
     </div>
   </section>
 
   <section id="about" class="section reveal">
-    <h2>About Me</h2>
-    <p>
+    <h2 data-i18n="about.heading">About Me</h2>
+    <p data-i18n="about.body">
       Master's student in Data Science with 4 year's experience as a Cloud Engineer and Implementation Consultant at ArisGlobal, cutting deployment time and project go-live cost by 15%. Strong analytical foundation in SQL, Python, Excel and Power BI, with a track record of translating operational data into measurable cost savings. Now looking to apply that analytical rigour to pricing strategy and market analysis in e-mobility.
     </p>
   </section>
 
   <section id="skills" class="section reveal">
-    <h2>Skills</h2>
+    <h2 data-i18n="skills.heading">Skills</h2>
 
-    <h3 class="skills-group-title">Analytics & Reporting</h3>
+    <h3 class="skills-group-title" data-i18n="skills.group.analytics">Analytics & Reporting</h3>
     <ul class="skills-list">
       <li class="reveal">SQL</li>
       <li class="reveal">Power BI</li>
@@ -115,7 +116,7 @@
       <li class="reveal">NumPy</li>
     </ul>
 
-    <h3 class="skills-group-title">Programming & Databases</h3>
+    <h3 class="skills-group-title" data-i18n="skills.group.programming">Programming & Databases</h3>
     <ul class="skills-list">
       <li class="reveal">Python</li>
       <li class="reveal">SQL</li>
@@ -125,7 +126,7 @@
       <li class="reveal">Scikit-learn</li>
     </ul>
 
-    <h3 class="skills-group-title">Cloud & DevOps</h3>
+    <h3 class="skills-group-title" data-i18n="skills.group.cloud">Cloud & DevOps</h3>
     <ul class="skills-list">
       <li class="reveal">AWS (EC2, RDS, Lambda, S3, VPC, IAM, ALB)</li>
       <li class="reveal">Git</li>
@@ -135,7 +136,7 @@
       <li class="reveal">Apache Tomcat</li>
     </ul>
 
-    <h3 class="skills-group-title">Tools</h3>
+    <h3 class="skills-group-title" data-i18n="skills.group.tools">Tools</h3>
     <ul class="skills-list">
       <li class="reveal">Jira</li>
       <li class="reveal">VS Code</li>
@@ -145,43 +146,43 @@
   </section>
 
   <section id="experience" class="section reveal">
-    <h2>Experience</h2>
+    <h2 data-i18n="experience.heading">Experience</h2>
     <div class="timeline">
       <div class="timeline-item reveal">
         <h3>Associate Cloud Engineer</h3>
         <span class="timeline-meta">ArisGlobal, Mysuru &middot; 10/2021 – 09/2025</span>
         <ul class="timeline-details">
-          <li>Improved system performance and data integrity by optimizing SQL queries and database structures, and automated log file validation through a Linux shell script that flagged execution errors and specified issues — saving 30–40 working hours and 3–5% of allocated project go-live cost.</li>
-          <li>Built and managed GitHub Actions CI/CD pipelines to automate deployments — triggering releases on push, sourcing configuration files from S3, and executing JAR builds for seamless, repeatable rollouts; managed multiple concurrent project deployments, delivering high-quality solutions under tight deadlines.</li>
-          <li>Leveraged AWS services — EC2, Lambda, S3, RDS, Secrets Manager, Systems Manager, CloudWatch, and Auto Scaling — including serverless architectures, to enhance system scalability, security, and performance across deployments and release upgrades.</li>
-          <li>Managed AWS and Datadog monitoring dashboards to proactively detect and resolve cloud and DevOps issues, reducing error resolution time by 20–30% compared to the previous approach.</li>
-          <li>Implemented Auth0 as a newly adopted third-party identity provider for the project, configuring SSO and passwordless authentication across multiple customer tenants.</li>
-          <li>Established the setup process for onboarding customers onto the new platform, defining a consistent, secure configuration standard for connections, credentials, and access policies.</li>
+          <li data-i18n="experience.bullet1">Improved system performance and data integrity by optimizing SQL queries and database structures, and automated log file validation through a Linux shell script that flagged execution errors and specified issues — saving 30–40 working hours and 3–5% of allocated project go-live cost.</li>
+          <li data-i18n="experience.bullet2">Built and managed GitHub Actions CI/CD pipelines to automate deployments — triggering releases on push, sourcing configuration files from S3, and executing JAR builds for seamless, repeatable rollouts; managed multiple concurrent project deployments, delivering high-quality solutions under tight deadlines.</li>
+          <li data-i18n="experience.bullet3">Leveraged AWS services — EC2, Lambda, S3, RDS, Secrets Manager, Systems Manager, CloudWatch, and Auto Scaling — including serverless architectures, to enhance system scalability, security, and performance across deployments and release upgrades.</li>
+          <li data-i18n="experience.bullet4">Managed AWS and Datadog monitoring dashboards to proactively detect and resolve cloud and DevOps issues, reducing error resolution time by 20–30% compared to the previous approach.</li>
+          <li data-i18n="experience.bullet5">Implemented Auth0 as a newly adopted third-party identity provider for the project, configuring SSO and passwordless authentication across multiple customer tenants.</li>
+          <li data-i18n="experience.bullet6">Established the setup process for onboarding customers onto the new platform, defining a consistent, secure configuration standard for connections, credentials, and access policies.</li>
         </ul>
       </div>
     </div>
   </section>
 
   <section id="education" class="section reveal">
-    <h2>Education</h2>
+    <h2 data-i18n="education.heading">Education</h2>
     <div class="timeline">
       <div class="timeline-item reveal">
-        <h3>Master's in Data Science</h3>
+        <h3 data-i18n="education.master">Master's in Data Science</h3>
         <span class="timeline-meta">University of Europe for Applied Sciences, Potsdam &middot; 09/2025 – Present</span>
       </div>
       <div class="timeline-item reveal">
-        <h3>Bachelor's in Computer Science</h3>
+        <h3 data-i18n="education.bachelor">Bachelor's in Computer Science</h3>
         <span class="timeline-meta">Vidya Vikas Institute of Engineering, India &middot; 08/2017 – 10/2021</span>
       </div>
     </div>
   </section>
 
   <section id="projects" class="section reveal">
-    <h2>Projects</h2>
+    <h2 data-i18n="projects.heading">Projects</h2>
     <div class="project-grid">
       <div class="project-card reveal">
         <h3>Global Supply Chain Performance Dashboard</h3>
-        <p>A data-visualization study of global maritime trade (2019–2026) using IMF PortWatch's daily, satellite-derived AIS data for ~90,000 vessels. Answers 10 analytical questions on how the 2023–24 Red Sea and Panama Canal disruptions rerouted trade rather than shrinking it, via a shared pipeline feeding both a notebook and a live dashboard.</p>
+        <p data-i18n="projects.supplyChain">A data-visualization study of global maritime trade (2019–2026) using IMF PortWatch's daily, satellite-derived AIS data for ~90,000 vessels. Answers 10 analytical questions on how the 2023–24 Red Sea and Panama Canal disruptions rerouted trade rather than shrinking it, via a shared pipeline feeding both a notebook and a live dashboard.</p>
         <ul class="tag-list">
           <li>Plotly</li>
           <li>Streamlit</li>
@@ -191,13 +192,13 @@
           <li>Python</li>
         </ul>
         <div class="project-links">
-          <a href="https://github.com/bopanna012/Global-Supply-Chain-Performance-Dashboard" target="_blank">View on GitHub</a>
-          <a href="https://global-supply-chain-performance-dashboard-7en4lf4cnljnwckrwqeg.streamlit.app/" target="_blank">Live Demo</a>
+          <a href="https://github.com/bopanna012/Global-Supply-Chain-Performance-Dashboard" target="_blank" data-i18n="links.github">View on GitHub</a>
+          <a href="https://global-supply-chain-performance-dashboard-7en4lf4cnljnwckrwqeg.streamlit.app/" target="_blank" data-i18n="links.demo">Live Demo</a>
         </div>
       </div>
       <div class="project-card reveal">
         <h3>Reducing Repeated LLM Calls Through Caching</h3>
-        <p>A hybrid caching layer for LLM applications that checks an exact-match cache, then a semantic cache (sentence-embedding similarity via FAISS) before falling back to a local LLM — cutting latency, cost, and repeated inference. Includes a benchmarking and threshold-tuning framework for cache-hit quality.</p>
+        <p data-i18n="projects.llmCaching">A hybrid caching layer for LLM applications that checks an exact-match cache, then a semantic cache (sentence-embedding similarity via FAISS) before falling back to a local LLM — cutting latency, cost, and repeated inference. Includes a benchmarking and threshold-tuning framework for cache-hit quality.</p>
         <ul class="tag-list">
           <li>FAISS</li>
           <li>Sentence-Transformers</li>
@@ -205,12 +206,12 @@
           <li>Python</li>
         </ul>
         <div class="project-links">
-          <a href="https://github.com/bopanna012/Reducing-Repeated-LLM-Calls-Through-Caching" target="_blank">View on GitHub</a>
+          <a href="https://github.com/bopanna012/Reducing-Repeated-LLM-Calls-Through-Caching" target="_blank" data-i18n="links.github">View on GitHub</a>
         </div>
       </div>
       <div class="project-card reveal">
         <h3>Crop Recommendation</h3>
-        <p>A machine-learning system that recommends the best-suited crop for a plot of land from its soil nutrients (N/P/K) and climate (temperature, humidity, pH, rainfall), trained on the Kaggle Crop Recommendation dataset (2,200 records, 22 crop classes). Ships as a Streamlit app with explainable feature importances plus a Power BI dashboard for exploring the data.</p>
+        <p data-i18n="projects.cropRecommendation">A machine-learning system that recommends the best-suited crop for a plot of land from its soil nutrients (N/P/K) and climate (temperature, humidity, pH, rainfall), trained on the Kaggle Crop Recommendation dataset (2,200 records, 22 crop classes). Ships as a Streamlit app with explainable feature importances plus a Power BI dashboard for exploring the data.</p>
         <ul class="tag-list">
           <li>scikit-learn (Random Forest, 99.32% accuracy)</li>
           <li>Streamlit</li>
@@ -218,12 +219,12 @@
           <li>Python</li>
         </ul>
         <div class="project-links">
-          <a href="https://github.com/bopanna012/Crop_Recommendation" target="_blank">View on GitHub</a>
+          <a href="https://github.com/bopanna012/Crop_Recommendation" target="_blank" data-i18n="links.github">View on GitHub</a>
         </div>
       </div>
       <div class="project-card reveal">
         <h3>Biodiversity Sound Monitor</h3>
-        <p>An end-to-end ML pipeline for weakly-labelled bird-sound classification, built around the Kaggle BirdCLEF 2026 dataset. Converts field-recorded audio into Log-Mel spectrograms and classifies them with a 2D CNN using Multiple-Instance-Learning pooling over frame-level predictions, since only file-level species tags are available. A Streamlit dashboard lets you upload audio and view spectrograms, species predictions, and confidence scores.</p>
+        <p data-i18n="projects.biodiversity">An end-to-end ML pipeline for weakly-labelled bird-sound classification, built around the Kaggle BirdCLEF 2026 dataset. Converts field-recorded audio into Log-Mel spectrograms and classifies them with a 2D CNN using Multiple-Instance-Learning pooling over frame-level predictions, since only file-level species tags are available. A Streamlit dashboard lets you upload audio and view spectrograms, species predictions, and confidence scores.</p>
         <ul class="tag-list">
           <li>CNN / Deep Learning</li>
           <li>Multiple-Instance-Learning</li>
@@ -231,12 +232,12 @@
           <li>Python</li>
         </ul>
         <div class="project-links">
-          <a href="https://github.com/bopanna012/biodiversity-sound-monitor" target="_blank">View on GitHub</a>
+          <a href="https://github.com/bopanna012/biodiversity-sound-monitor" target="_blank" data-i18n="links.github">View on GitHub</a>
         </div>
       </div>
       <div class="project-card reveal">
         <h3>Retail Inventory Optimisation</h3>
-        <p>A full-stack decision-support system for retail inventory management: a normalized multi-store, multi-supplier PostgreSQL schema with live stock-health monitoring, reorder alerts, and days-to-expiry tracking. Derived-field logic (stock status, reorder alerts, capacity) is implemented once on the backend and imported directly by the frontend so the UI can never disagree with the API.</p>
+        <p data-i18n="projects.retailInventory">A full-stack decision-support system for retail inventory management: a normalized multi-store, multi-supplier PostgreSQL schema with live stock-health monitoring, reorder alerts, and days-to-expiry tracking. Derived-field logic (stock status, reorder alerts, capacity) is implemented once on the backend and imported directly by the frontend so the UI can never disagree with the API.</p>
         <ul class="tag-list">
           <li>Next.js</li>
           <li>Express REST API</li>
@@ -245,56 +246,56 @@
           <li>JavaScript</li>
         </ul>
         <div class="project-links">
-          <a href="https://github.com/bopanna012/Retail_inventory_optimisation" target="_blank">View on GitHub</a>
+          <a href="https://github.com/bopanna012/Retail_inventory_optimisation" target="_blank" data-i18n="links.github">View on GitHub</a>
         </div>
       </div>
     </div>
   </section>
 
   <section id="certifications" class="section reveal">
-    <h2>Certifications & Honors</h2>
+    <h2 data-i18n="certifications.heading">Certifications & Honors</h2>
     <div class="timeline">
       <div class="timeline-item reveal">
         <h3>Value Champion Award</h3>
         <span class="timeline-meta">ArisGlobal &middot; 05/2025</span>
-        <p>Recognized for delivering the Roche project go-live with zero production issues.</p>
+        <p data-i18n="certifications.valueChampion">Recognized for delivering the Roche project go-live with zero production issues.</p>
       </div>
       <div class="timeline-item reveal">
         <h3>Best Team for 2024–25</h3>
         <span class="timeline-meta">ArisGlobal &middot; 2025</span>
-        <p>Achieved the title in the ArisGlobal ELEVATE award for the successful implementation of four live projects within a brief timeframe.</p>
+        <p data-i18n="certifications.bestTeam">Achieved the title in the ArisGlobal ELEVATE award for the successful implementation of four live projects within a brief timeframe.</p>
       </div>
       <div class="timeline-item reveal">
         <h3>Spot Award</h3>
         <span class="timeline-meta">ArisGlobal &middot; 2022</span>
-        <p>Awarded for rapidly mastering core cloud technologies and contributing to the live production environment within a short onboarding period.</p>
+        <p data-i18n="certifications.spotAward">Awarded for rapidly mastering core cloud technologies and contributing to the live production environment within a short onboarding period.</p>
       </div>
     </div>
   </section>
 
   <section id="languages" class="section reveal">
-    <h2>Languages</h2>
+    <h2 data-i18n="languages.heading">Languages</h2>
     <ul class="skills-list">
-      <li class="reveal">English — C1</li>
-      <li class="reveal">German — A2</li>
+      <li class="reveal" data-i18n="languages.english">English — C1</li>
+      <li class="reveal" data-i18n="languages.german">German — A2</li>
     </ul>
   </section>
 
   <section id="contact" class="section reveal">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:yashubopannapd012@gmail.com">yashubopannapd012@gmail.com</a></p>
+    <h2 data-i18n="contact.heading">Contact</h2>
+    <p><span data-i18n="contact.emailLabel">Email:</span> <a href="mailto:yashubopannapd012@gmail.com">yashubopannapd012@gmail.com</a></p>
 
     <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <label for="name">Name</label>
+      <label for="name" data-i18n="contact.name">Name</label>
       <input type="text" id="name" name="name" required>
 
-      <label for="email">Email</label>
+      <label for="email" data-i18n="contact.emailField">Email</label>
       <input type="email" id="email" name="email" required>
 
-      <label for="message">Message</label>
+      <label for="message" data-i18n="contact.message">Message</label>
       <textarea id="message" name="message" rows="5" required></textarea>
 
-      <button type="submit" class="btn">Send Message</button>
+      <button type="submit" class="btn" data-i18n="contact.send">Send Message</button>
     </form>
 
     <div class="social-icons">
@@ -313,7 +314,7 @@
   <button id="backToTop" class="back-to-top" aria-label="Back to top">&#8593;</button>
 
   <footer>
-    <p>&copy; <span id="year"></span> Yashu Bopanna Pasura Devaiah. Built with HTML, CSS & JS.</p>
+    <p>&copy; <span id="year"></span> Yashu Bopanna Pasura Devaiah. <span data-i18n="footer.builtWith">Built with HTML, CSS & JS.</span></p>
   </footer>
 
   <script src="script.js"></script>
