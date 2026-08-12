@@ -25,7 +25,7 @@
   --text-meta: #71717a;
 
   --bg-input: #ffffff;
-  --border-input: #e7e5e4;
+  --border-input: #000000;
   --text-input: #18181b;
 
   --text-social: #18181b;
@@ -52,7 +52,7 @@
   --text-meta: #a1a1aa;
 
   --bg-input: #171717;
-  --border-input: #27272a;
+  --border-input: #52525b;
   --text-input: #fafaf9;
 
   --text-social: #fafaf9;
@@ -99,7 +99,6 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  padding-right: 4.5rem;
   background: #111;
   color: #fff;
   position: sticky;
@@ -169,20 +168,32 @@ body {
   line-height: 1;
 }
 
-.lang-toggle {
-  position: fixed;
-  top: 0.9rem;
-  right: 1.5rem;
-  z-index: 210;
-  background: #111;
-  color: #fff;
-  font-size: 0.85rem;
-  font-weight: 600;
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin-left: 0.75rem;
+  padding: 0.2rem;
   border: 1px solid #444;
-  border-radius: 4px;
-  padding: 0.3rem 0.5rem;
+  border-radius: 999px;
+}
+
+.lang-option {
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
   cursor: pointer;
   line-height: 1;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.lang-option.active {
+  background: var(--accent);
+  color: var(--text-on-accent);
 }
 
 .nav-toggle {

@@ -20,12 +20,12 @@ const translations = {
   'stats.years': { en: 'Years Experience', de: 'Jahre Erfahrung' },
   'stats.projects': { en: 'Projects Completed', de: 'Abgeschlossene Projekte' },
   'stats.certifications': { en: 'Certifications', de: 'Zertifizierungen' },
-  'stats.clients': { en: 'Happy Clients', de: 'Zufriedene Kunden' },
+  'stats.clients': { en: 'KPI Dashboards', de: 'KPI-Dashboards' },
 
   'about.heading': { en: 'About Me', de: 'Über mich' },
   'about.body': {
-    en: "Master's student in Data Science with 4 year's experience as a Cloud Engineer and Implementation Consultant at ArisGlobal, cutting deployment time and project go-live cost by 15%. Strong analytical foundation in SQL, Python, Excel and Power BI, with a track record of translating operational data into measurable cost savings. Now looking to apply that analytical rigour to pricing strategy and market analysis in e-mobility.",
-    de: 'Masterstudent in Data Science mit 4 Jahren Erfahrung als Cloud Engineer und Implementation Consultant bei ArisGlobal, wo ich die Bereitstellungszeit und die Projekt-Go-live-Kosten um 15 % senken konnte. Fundierte analytische Grundlage in SQL, Python, Excel und Power BI, mit nachweisbarer Erfahrung darin, operative Daten in messbare Kosteneinsparungen zu übersetzen. Ich möchte diese analytische Präzision nun auf Preisstrategie und Marktanalyse im Bereich E-Mobilität anwenden.'
+    en: "Master's student in Data Science with 4 years' experience as a Cloud Engineer and Implementation Consultant at ArisGlobal, cutting deployment time and project go-live cost by 15%. Strong hands-on foundation in SQL and Power BI — writing queries to extract, join and aggregate data from relational databases, and building dashboards and data models that turn raw operational data into clear, actionable insights. Experienced partnering with technical and non-technical stakeholders across Finance and Operations to document data logic and surface process inefficiencies. Now looking to bring that analytical rigour to data-driven roles across analytics, machine learning and business intelligence, with a strong interest in e-Mobility and fast-moving product environments.",
+    de: 'Masterstudent in Data Science mit 4 Jahren Erfahrung als Cloud Engineer und Implementation Consultant bei ArisGlobal, wo ich die Bereitstellungszeit und die Projekt-Go-live-Kosten um 15 % senken konnte. Fundierte praktische Grundlage in SQL und Power BI — vom Schreiben von Abfragen zum Extrahieren, Verknüpfen und Aggregieren von Daten aus relationalen Datenbanken bis hin zum Aufbau von Dashboards und Datenmodellen, die rohe operative Daten in klare, umsetzbare Erkenntnisse verwandeln. Erfahren in der Zusammenarbeit mit technischen und nicht-technischen Stakeholdern aus den Bereichen Finance und Operations, um Datenlogik zu dokumentieren und Prozessineffizienzen aufzudecken. Ich möchte diese analytische Präzision nun in datengetriebene Rollen in den Bereichen Analytics, Machine Learning und Business Intelligence einbringen, mit besonderem Interesse an E-Mobilität und dynamischen Produktumgebungen.'
   },
 
   'skills.heading': { en: 'Skills', de: 'Fähigkeiten' },
@@ -108,21 +108,22 @@ const translations = {
   'footer.builtWith': { en: 'Built with HTML, CSS & JS.', de: 'Erstellt mit HTML, CSS & JS.' }
 };
 
-const langToggle = document.getElementById('langToggle');
+const langOptions = document.querySelectorAll('.lang-option');
 function applyLanguage(lang) {
   document.documentElement.setAttribute('lang', lang);
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const entry = translations[el.getAttribute('data-i18n')];
     if (entry) el.textContent = entry[lang];
   });
-  langToggle.textContent = lang === 'en' ? 'DE' : 'EN';
+  langOptions.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
 }
 const savedLang = localStorage.getItem('lang') === 'de' ? 'de' : 'en';
 applyLanguage(savedLang);
-langToggle.addEventListener('click', () => {
-  const nextLang = document.documentElement.getAttribute('lang') === 'de' ? 'en' : 'de';
-  localStorage.setItem('lang', nextLang);
-  applyLanguage(nextLang);
+langOptions.forEach(btn => {
+  btn.addEventListener('click', () => {
+    localStorage.setItem('lang', btn.dataset.lang);
+    applyLanguage(btn.dataset.lang);
+  });
 });
 
 // Theme toggle
