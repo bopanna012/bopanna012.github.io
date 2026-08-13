@@ -342,7 +342,8 @@ body {
 .stats .reveal:nth-child(4) { transition-delay: 0.3s; }
 
 .project-grid .reveal:nth-child(5),
-.skills-list .reveal:nth-child(5) { transition-delay: 0.4s; }
+.skills-list .reveal:nth-child(5),
+.stats .reveal:nth-child(5) { transition-delay: 0.4s; }
 .skills-list .reveal:nth-child(6) { transition-delay: 0.5s; }
 
 .section {

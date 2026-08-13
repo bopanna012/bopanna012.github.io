@@ -15,10 +15,10 @@ const translations = {
   'hero.greeting': { en: "Hi, I'm Yashu 👋", de: 'Hallo, ich bin Yashu 👋' },
   'hero.subtitle': { en: 'A cloud engineer learning to build and showcase my work.', de: 'Ein Cloud Engineer, der lernt, seine Arbeit aufzubauen und zu präsentieren.' },
   'hero.viewWork': { en: 'View My Work', de: 'Meine Arbeit ansehen' },
-  'hero.downloadResume': { en: 'Download Resume', de: 'Lebenslauf herunterladen' },
 
   'stats.years': { en: 'Years Experience', de: 'Jahre Erfahrung' },
   'stats.projects': { en: 'Projects Completed', de: 'Abgeschlossene Projekte' },
+  'stats.tools': { en: 'Tools & Technologies', de: 'Tools & Technologien' },
   'stats.certifications': { en: 'Certifications', de: 'Zertifizierungen' },
   'stats.clients': { en: 'KPI Dashboards', de: 'KPI-Dashboards' },
 
