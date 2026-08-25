@@ -44,6 +44,10 @@
 
   <div class="progress-bar" id="progressBar"></div>
 
+  <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+
+  <nav class="scrollspy-dots" id="scrollspyDots" aria-label="Section navigation"></nav>
+
   <header class="navbar">
     <h2><div class="logo">Yashu Bopanna Pasura Devaiah</div></h2>
     <div class="nav-right">
@@ -70,9 +74,10 @@
 
   <section class="hero" id="main-content">
     <h1 data-i18n="hero.greeting">Hi, I'm Yashu 👋</h1>
+    <p class="hero-role"><span id="typewriterText"></span><span class="typewriter-cursor" aria-hidden="true">|</span></p>
     <p data-i18n="hero.subtitle">A cloud engineer learning to build and showcase my work.</p>
     <div class="hero-buttons">
-      <a href="#projects" class="btn" data-i18n="hero.viewWork">View My Work</a>
+      <a href="#projects" class="btn magnetic" data-i18n="hero.viewWork">View My Work</a>
     </div>
   </section>
 
@@ -185,73 +190,131 @@
   <section id="projects" class="section reveal">
     <h2 data-i18n="projects.heading">Projects</h2>
     <div class="project-grid">
-      <div class="project-card reveal">
-        <h3>Global Supply Chain Performance Dashboard</h3>
-        <p data-i18n="projects.supplyChain">A data-visualization study of global maritime trade (2019–2026) using IMF PortWatch's daily, satellite-derived AIS data for ~90,000 vessels. Answers 10 analytical questions on how the 2023–24 Red Sea and Panama Canal disruptions rerouted trade rather than shrinking it, via a shared pipeline feeding both a notebook and a live dashboard.</p>
-        <ul class="tag-list">
-          <li>Plotly</li>
-          <li>Streamlit</li>
-          <li>IMF PortWatch / ArcGIS API</li>
-          <li>World Bank LPI API</li>
-          <li>NY Fed GSCPI</li>
-          <li>Python</li>
-        </ul>
-        <div class="project-links">
-          <a href="https://github.com/bopanna012/Global-Supply-Chain-Performance-Dashboard" target="_blank" data-i18n="links.github">View on GitHub</a>
-          <a href="https://global-supply-chain-performance-dashboard-7en4lf4cnljnwckrwqeg.streamlit.app/" target="_blank" data-i18n="links.demo">Live Demo</a>
+      <div class="project-card reveal" id="project-supply-chain">
+        <a class="project-banner" href="https://github.com/bopanna012/Global-Supply-Chain-Performance-Dashboard" target="_blank" aria-label="View Global Supply Chain Performance Dashboard on GitHub">
+          <span class="project-banner-tag">BI</span>
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="25" width="14" height="14" rx="3"/>
+            <rect x="25" y="25" width="14" height="14" rx="3"/>
+            <rect x="46" y="25" width="14" height="14" rx="3"/>
+            <path d="M18 32h5M39 32h5"/>
+            <path d="M21 29l3 3-3 3M42 29l3 3-3 3"/>
+          </svg>
+          <span class="project-banner-overlay"><span data-i18n="links.github">View on GitHub</span> &#8594;</span>
+        </a>
+        <div class="project-card-body">
+          <h3>Global Supply Chain Performance Dashboard</h3>
+          <p data-i18n="projects.supplyChain">A data-visualization study of global maritime trade (2019–2026) using IMF PortWatch's daily, satellite-derived AIS data for ~90,000 vessels. Answers 10 analytical questions on how the 2023–24 Red Sea and Panama Canal disruptions rerouted trade rather than shrinking it, via a shared pipeline feeding both a notebook and a live dashboard.</p>
+          <ul class="tag-list">
+            <li>Plotly</li>
+            <li>Streamlit</li>
+            <li>IMF PortWatch / ArcGIS API</li>
+            <li>World Bank LPI API</li>
+            <li>NY Fed GSCPI</li>
+            <li>Python</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/bopanna012/Global-Supply-Chain-Performance-Dashboard" target="_blank" data-i18n="links.github">View on GitHub</a>
+            <a href="https://global-supply-chain-performance-dashboard-7en4lf4cnljnwckrwqeg.streamlit.app/" target="_blank" data-i18n="links.demo">Live Demo</a>
+            <a href="https://github.com/bopanna012/Global-Supply-Chain-Performance-Dashboard/blob/main/presentation/poster.pdf" target="_blank" data-i18n="links.poster">Poster</a>
+          </div>
         </div>
       </div>
-      <div class="project-card reveal">
-        <h3>Reducing Repeated LLM Calls Through Caching</h3>
-        <p data-i18n="projects.llmCaching">A hybrid caching layer for LLM applications that checks an exact-match cache, then a semantic cache (sentence-embedding similarity via FAISS) before falling back to a local LLM — cutting latency, cost, and repeated inference. Includes a benchmarking and threshold-tuning framework for cache-hit quality.</p>
-        <ul class="tag-list">
-          <li>FAISS</li>
-          <li>Sentence-Transformers</li>
-          <li>Ollama</li>
-          <li>Python</li>
-        </ul>
-        <div class="project-links">
-          <a href="https://github.com/bopanna012/Reducing-Repeated-LLM-Calls-Through-Caching" target="_blank" data-i18n="links.github">View on GitHub</a>
+      <div class="project-card reveal" id="project-llm-caching">
+        <a class="project-banner" href="https://github.com/bopanna012/Reducing-Repeated-LLM-Calls-Through-Caching" target="_blank" aria-label="View Reducing Repeated LLM Calls Through Caching on GitHub">
+          <span class="project-banner-tag">LLM</span>
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="32" cy="32" r="20"/>
+            <path d="M32 32V16M32 32L20 42M32 32L44 42"/>
+            <circle cx="32" cy="32" r="3" fill="currentColor" stroke="none"/>
+            <circle cx="32" cy="16" r="3" fill="currentColor" stroke="none"/>
+            <circle cx="20" cy="42" r="3" fill="currentColor" stroke="none"/>
+            <circle cx="44" cy="42" r="3" fill="currentColor" stroke="none"/>
+          </svg>
+          <span class="project-banner-overlay"><span data-i18n="links.github">View on GitHub</span> &#8594;</span>
+        </a>
+        <div class="project-card-body">
+          <h3>Reducing Repeated LLM Calls Through Caching</h3>
+          <p data-i18n="projects.llmCaching">A hybrid caching layer for LLM applications that checks an exact-match cache, then a semantic cache (sentence-embedding similarity via FAISS) before falling back to a local LLM — cutting latency, cost, and repeated inference. Includes a benchmarking and threshold-tuning framework for cache-hit quality.</p>
+          <ul class="tag-list">
+            <li>FAISS</li>
+            <li>Sentence-Transformers</li>
+            <li>Ollama</li>
+            <li>Python</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/bopanna012/Reducing-Repeated-LLM-Calls-Through-Caching" target="_blank" data-i18n="links.github">View on GitHub</a>
+          </div>
         </div>
       </div>
-      <div class="project-card reveal">
-        <h3>Crop Recommendation</h3>
-        <p data-i18n="projects.cropRecommendation">A machine-learning system that recommends the best-suited crop for a plot of land from its soil nutrients (N/P/K) and climate (temperature, humidity, pH, rainfall), trained on the Kaggle Crop Recommendation dataset (2,200 records, 22 crop classes). Ships as a Streamlit app with explainable feature importances plus a Power BI dashboard for exploring the data.</p>
-        <ul class="tag-list">
-          <li>scikit-learn (Random Forest, 99.32% accuracy)</li>
-          <li>Streamlit</li>
-          <li>Power BI</li>
-          <li>Python</li>
-        </ul>
-        <div class="project-links">
-          <a href="https://github.com/bopanna012/Crop_Recommendation" target="_blank" data-i18n="links.github">View on GitHub</a>
+      <div class="project-card reveal" id="project-crop-recommendation">
+        <a class="project-banner" href="https://github.com/bopanna012/Crop_Recommendation" target="_blank" aria-label="View Crop Recommendation on GitHub">
+          <span class="project-banner-tag">ML</span>
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M32 54C32 54 14 46 14 26C14 14 24 8 32 8C40 8 50 14 50 26C50 46 32 54 32 54Z"/>
+            <path d="M32 54V20"/>
+          </svg>
+          <span class="project-banner-overlay"><span data-i18n="links.github">View on GitHub</span> &#8594;</span>
+        </a>
+        <div class="project-card-body">
+          <h3>Crop Recommendation</h3>
+          <p data-i18n="projects.cropRecommendation">A machine-learning system that recommends the best-suited crop for a plot of land from its soil nutrients (N/P/K) and climate (temperature, humidity, pH, rainfall), trained on the Kaggle Crop Recommendation dataset (2,200 records, 22 crop classes). Ships as a Streamlit app with explainable feature importances plus a Power BI dashboard for exploring the data.</p>
+          <ul class="tag-list">
+            <li>scikit-learn (Random Forest, 99.32% accuracy)</li>
+            <li>Streamlit</li>
+            <li>Power BI</li>
+            <li>Python</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/bopanna012/Crop_Recommendation" target="_blank" data-i18n="links.github">View on GitHub</a>
+          </div>
         </div>
       </div>
-      <div class="project-card reveal">
-        <h3>Biodiversity Sound Monitor</h3>
-        <p data-i18n="projects.biodiversity">An end-to-end ML pipeline for weakly-labelled bird-sound classification, built around the Kaggle BirdCLEF 2026 dataset. Converts field-recorded audio into Log-Mel spectrograms and classifies them with a 2D CNN using Multiple-Instance-Learning pooling over frame-level predictions, since only file-level species tags are available. A Streamlit dashboard lets you upload audio and view spectrograms, species predictions, and confidence scores.</p>
-        <ul class="tag-list">
-          <li>CNN / Deep Learning</li>
-          <li>Multiple-Instance-Learning</li>
-          <li>Streamlit</li>
-          <li>Python</li>
-        </ul>
-        <div class="project-links">
-          <a href="https://github.com/bopanna012/biodiversity-sound-monitor" target="_blank" data-i18n="links.github">View on GitHub</a>
+      <div class="project-card reveal" id="project-biodiversity">
+        <a class="project-banner" href="https://github.com/bopanna012/biodiversity-sound-monitor" target="_blank" aria-label="View Biodiversity Sound Monitor on GitHub">
+          <span class="project-banner-tag">AUDIO ML</span>
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 32h4M14 22v20M22 12v40M30 20v24M38 8v48M46 22v20M54 32h4"/>
+          </svg>
+          <span class="project-banner-overlay"><span data-i18n="links.github">View on GitHub</span> &#8594;</span>
+        </a>
+        <div class="project-card-body">
+          <h3>Biodiversity Sound Monitor</h3>
+          <p data-i18n="projects.biodiversity">An end-to-end ML pipeline for weakly-labelled bird-sound classification, built around the Kaggle BirdCLEF 2026 dataset. Converts field-recorded audio into Log-Mel spectrograms and classifies them with a 2D CNN using Multiple-Instance-Learning pooling over frame-level predictions, since only file-level species tags are available. A Streamlit dashboard lets you upload audio and view spectrograms, species predictions, and confidence scores.</p>
+          <ul class="tag-list">
+            <li>CNN / Deep Learning</li>
+            <li>Multiple-Instance-Learning</li>
+            <li>Streamlit</li>
+            <li>Python</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/bopanna012/biodiversity-sound-monitor" target="_blank" data-i18n="links.github">View on GitHub</a>
+          </div>
         </div>
       </div>
-      <div class="project-card reveal">
-        <h3>Retail Inventory Optimisation</h3>
-        <p data-i18n="projects.retailInventory">A full-stack decision-support system for retail inventory management: a normalized multi-store, multi-supplier PostgreSQL schema with live stock-health monitoring, reorder alerts, and days-to-expiry tracking. Derived-field logic (stock status, reorder alerts, capacity) is implemented once on the backend and imported directly by the frontend so the UI can never disagree with the API.</p>
-        <ul class="tag-list">
-          <li>Next.js</li>
-          <li>Express REST API</li>
-          <li>PostgreSQL</li>
-          <li>Joi</li>
-          <li>JavaScript</li>
-        </ul>
-        <div class="project-links">
-          <a href="https://github.com/bopanna012/Retail_inventory_optimisation" target="_blank" data-i18n="links.github">View on GitHub</a>
+      <div class="project-card reveal" id="project-retail-inventory">
+        <a class="project-banner" href="https://github.com/bopanna012/Retail_inventory_optimisation" target="_blank" aria-label="View Retail Inventory Optimisation on GitHub">
+          <span class="project-banner-tag">FULL-STACK</span>
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="32" cy="14" rx="18" ry="6"/>
+            <path d="M14 14v18c0 3.3 8 6 18 6s18-2.7 18-6V14"/>
+            <path d="M14 32v18c0 3.3 8 6 18 6s18-2.7 18-6V32"/>
+          </svg>
+          <span class="project-banner-overlay"><span data-i18n="links.github">View on GitHub</span> &#8594;</span>
+        </a>
+        <div class="project-card-body">
+          <h3>Retail Inventory Optimisation</h3>
+          <p data-i18n="projects.retailInventory">A full-stack decision-support system for retail inventory management: a normalized multi-store, multi-supplier PostgreSQL schema with live stock-health monitoring, reorder alerts, and days-to-expiry tracking. Derived-field logic (stock status, reorder alerts, capacity) is implemented once on the backend and imported directly by the frontend so the UI can never disagree with the API.</p>
+          <ul class="tag-list">
+            <li>Next.js</li>
+            <li>Express REST API</li>
+            <li>PostgreSQL</li>
+            <li>Joi</li>
+            <li>JavaScript</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/bopanna012/Retail_inventory_optimisation" target="_blank" data-i18n="links.github">View on GitHub</a>
+          </div>
         </div>
       </div>
     </div>
@@ -286,9 +349,9 @@
     </ul>
   </section>
 
-  <section id="contact" class="section reveal">
+  <section id="contact" class="section reveal contact-section">
     <h2 data-i18n="contact.heading">Contact</h2>
-    <p><span data-i18n="contact.emailLabel">Email:</span> <a href="mailto:yashubopannapd012@gmail.com">yashubopannapd012@gmail.com</a></p>
+    <p class="contact-intro" data-i18n="contact.intro">Feel free to Contact me by submitting the form below and I will get back to you.</p>
 
     <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
       <label for="name" data-i18n="contact.name">Name</label>
@@ -317,6 +380,18 @@
   </section>
 
   <button id="backToTop" class="back-to-top" aria-label="Back to top">&#8593;</button>
+
+  <button id="cmdkTrigger" class="cmdk-trigger" aria-label="Open command palette (Ctrl/Cmd+K)">
+    <span>&#128269;</span>
+    <kbd>Ctrl K</kbd>
+  </button>
+
+  <div class="cmdk-overlay" id="cmdkOverlay" hidden>
+    <div class="cmdk-panel" role="dialog" aria-modal="true" aria-label="Command palette">
+      <input type="text" id="cmdkInput" class="cmdk-input" placeholder="Jump to a section or project…" autocomplete="off">
+      <ul class="cmdk-results" id="cmdkResults"></ul>
+    </div>
+  </div>
 
   <footer>
     <p>&copy; <span id="year"></span> Yashu Bopanna Pasura Devaiah. <span data-i18n="footer.builtWith">Built with HTML, CSS & JS.</span></p>

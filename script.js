@@ -87,6 +87,7 @@ const translations = {
   },
   'links.github': { en: 'View on GitHub', de: 'Auf GitHub ansehen' },
   'links.demo': { en: 'Live Demo', de: 'Live-Demo' },
+  'links.poster': { en: 'Poster', de: 'Poster' },
 
   'certifications.heading': { en: 'Certifications & Honors', de: 'Zertifizierungen & Auszeichnungen' },
   'certifications.valueChampion': { en: 'Recognized for delivering the Roche project go-live with zero production issues.', de: 'Ausgezeichnet für den erfolgreichen Go-live des Roche-Projekts ohne Produktionsprobleme.' },
@@ -98,7 +99,7 @@ const translations = {
   'languages.german': { en: 'German — A2', de: 'Deutsch — A2' },
 
   'contact.heading': { en: 'Contact', de: 'Kontakt' },
-  'contact.emailLabel': { en: 'Email:', de: 'E-Mail:' },
+  'contact.intro': { en: 'Feel free to Contact me by submitting the form below and I will get back to you.', de: 'Kontaktieren Sie mich gerne über das untenstehende Formular — ich melde mich zeitnah bei Ihnen zurück.' },
   'contact.name': { en: 'Name', de: 'Name' },
   'contact.emailField': { en: 'Email', de: 'E-Mail' },
   'contact.message': { en: 'Message', de: 'Nachricht' },
@@ -123,6 +124,7 @@ langOptions.forEach(btn => {
   btn.addEventListener('click', () => {
     localStorage.setItem('lang', btn.dataset.lang);
     applyLanguage(btn.dataset.lang);
+    syncScrollspyLabels();
   });
 });
 
@@ -195,6 +197,24 @@ const sections = [...navLinks]
   .map(link => document.querySelector(link.getAttribute('href')))
   .filter(Boolean);
 
+// Side scrollspy dots — one per nav section, built from the same list
+const scrollspyContainer = document.getElementById('scrollspyDots');
+const scrollspyDots = [...navLinks].map(link => {
+  const dot = document.createElement('button');
+  dot.className = 'scrollspy-dot';
+  dot.dataset.target = link.getAttribute('href');
+  dot.setAttribute('aria-label', link.textContent);
+  dot.addEventListener('click', () => {
+    document.querySelector(dot.dataset.target).scrollIntoView({ behavior: 'smooth' });
+  });
+  scrollspyContainer.appendChild(dot);
+  return dot;
+});
+// Keep dot aria-labels in sync when the language changes
+const syncScrollspyLabels = () => {
+  navLinks.forEach((link, i) => scrollspyDots[i].setAttribute('aria-label', link.textContent));
+};
+
 const activeObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -202,8 +222,207 @@ const activeObserver = new IntersectionObserver((entries) => {
       navLinks.forEach(link => {
         link.classList.toggle('active', link.getAttribute('href') === '#' + id);
       });
+      scrollspyDots.forEach(dot => {
+        dot.classList.toggle('active', dot.dataset.target === '#' + id);
+      });
     }
   });
 }, { rootMargin: '-45% 0px -45% 0px' });
 
 sections.forEach(section => activeObserver.observe(section));
+
+// Micro-interactions (skipped for touch devices / reduced-motion preference)
+const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Cursor-following spotlight glow
+if (finePointer && !reducedMotion) {
+  const spotlight = document.getElementById('spotlight');
+  let spotlightFrame = null;
+  window.addEventListener('mousemove', (e) => {
+    if (spotlightFrame) return;
+    spotlightFrame = requestAnimationFrame(() => {
+      spotlight.style.setProperty('--mx', e.clientX + 'px');
+      spotlight.style.setProperty('--my', e.clientY + 'px');
+      spotlightFrame = null;
+    });
+  });
+}
+
+// Magnetic buttons
+if (finePointer && !reducedMotion) {
+  document.querySelectorAll('.magnetic').forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const relX = e.clientX - rect.left - rect.width / 2;
+      const relY = e.clientY - rect.top - rect.height / 2;
+      el.style.transform = `translate(${relX * 0.3}px, ${relY * 0.3}px)`;
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = '';
+    });
+  });
+}
+
+// 3D tilt on project cards
+if (finePointer && !reducedMotion) {
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width;
+      const py = (e.clientY - rect.top) / rect.height;
+      const rotateX = (0.5 - py) * 10;
+      const rotateY = (px - 0.5) * 10;
+      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
+
+// Typewriter effect cycling through roles
+const roles = ['Cloud Engineer', 'Data Scientist', 'ML Enthusiast'];
+const typewriterEl = document.getElementById('typewriterText');
+if (reducedMotion) {
+  typewriterEl.textContent = roles[0];
+} else {
+  let roleIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  function typeStep() {
+    const current = roles[roleIndex];
+    if (!deleting) {
+      charIndex++;
+      typewriterEl.textContent = current.slice(0, charIndex);
+      if (charIndex === current.length) {
+        deleting = true;
+        setTimeout(typeStep, 1500);
+        return;
+      }
+      setTimeout(typeStep, 80);
+    } else {
+      charIndex--;
+      typewriterEl.textContent = current.slice(0, charIndex);
+      if (charIndex === 0) {
+        deleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        setTimeout(typeStep, 300);
+        return;
+      }
+      setTimeout(typeStep, 40);
+    }
+  }
+  typeStep();
+}
+
+// Command palette (Ctrl/Cmd+K)
+const cmdkOverlay = document.getElementById('cmdkOverlay');
+const cmdkInput = document.getElementById('cmdkInput');
+const cmdkResultsEl = document.getElementById('cmdkResults');
+const cmdkTrigger = document.getElementById('cmdkTrigger');
+let cmdkItems = [];
+let cmdkHighlighted = 0;
+
+function buildCmdkItems() {
+  const sectionItems = [...navLinks].map(link => ({
+    label: link.textContent,
+    tag: 'Section',
+    target: document.querySelector(link.getAttribute('href'))
+  }));
+  const projectItems = [...document.querySelectorAll('#projects .project-card')].map(card => ({
+    label: card.querySelector('h3').textContent,
+    tag: 'Project',
+    target: card
+  }));
+  return [...sectionItems, ...projectItems];
+}
+
+function renderCmdkResults(filter) {
+  const query = filter.trim().toLowerCase();
+  const filtered = cmdkItems.filter(item => item.label.toLowerCase().includes(query));
+  cmdkResultsEl.innerHTML = '';
+  cmdkHighlighted = 0;
+
+  if (filtered.length === 0) {
+    const li = document.createElement('li');
+    li.className = 'no-results';
+    li.textContent = 'No matches';
+    cmdkResultsEl.appendChild(li);
+    return;
+  }
+
+  filtered.forEach((item, i) => {
+    const li = document.createElement('li');
+    li.textContent = item.label;
+    if (i === 0) li.classList.add('highlighted');
+    const tag = document.createElement('span');
+    tag.className = 'cmdk-tag';
+    tag.textContent = item.tag;
+    li.appendChild(tag);
+    li.addEventListener('mouseenter', () => setCmdkHighlight(i));
+    li.addEventListener('click', () => activateCmdkItem(item));
+    cmdkResultsEl.appendChild(li);
+  });
+}
+
+function setCmdkHighlight(index) {
+  cmdkHighlighted = index;
+  [...cmdkResultsEl.children].forEach((li, i) => li.classList.toggle('highlighted', i === index));
+}
+
+function activateCmdkItem(item) {
+  if (item && item.target) {
+    item.target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  closeCmdk();
+}
+
+function openCmdk() {
+  cmdkItems = buildCmdkItems();
+  cmdkOverlay.hidden = false;
+  cmdkInput.value = '';
+  renderCmdkResults('');
+  cmdkInput.focus();
+}
+
+function closeCmdk() {
+  cmdkOverlay.hidden = true;
+}
+
+document.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+    e.preventDefault();
+    cmdkOverlay.hidden ? openCmdk() : closeCmdk();
+  } else if (e.key === 'Escape' && !cmdkOverlay.hidden) {
+    closeCmdk();
+  }
+});
+
+cmdkTrigger.addEventListener('click', openCmdk);
+
+cmdkOverlay.addEventListener('click', (e) => {
+  if (e.target === cmdkOverlay) closeCmdk();
+});
+
+cmdkInput.addEventListener('input', () => renderCmdkResults(cmdkInput.value));
+
+cmdkInput.addEventListener('keydown', (e) => {
+  const items = [...cmdkResultsEl.querySelectorAll('li:not(.no-results)')];
+  if (items.length === 0) return;
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    setCmdkHighlight((cmdkHighlighted + 1) % items.length);
+    items[cmdkHighlighted].scrollIntoView({ block: 'nearest' });
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    setCmdkHighlight((cmdkHighlighted - 1 + items.length) % items.length);
+    items[cmdkHighlighted].scrollIntoView({ block: 'nearest' });
+  } else if (e.key === 'Enter') {
+    e.preventDefault();
+    const query = cmdkInput.value.trim().toLowerCase();
+    const filtered = cmdkItems.filter(item => item.label.toLowerCase().includes(query));
+    activateCmdkItem(filtered[cmdkHighlighted]);
+  }
+});
